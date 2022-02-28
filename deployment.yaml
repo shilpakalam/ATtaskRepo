@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shilpa-deployment
+  labels:
+    app: shilpa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shilpa
+  template:
+    metadata:
+      labels:
+        app: shilpa
+    spec:
+      containers:
+      - name: shilpa-django
+        image: shilpa-django:1.0 
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ATC_USERNAME
+          value: ''
+        - name: ATC_PASSWORD
+          value: ''
